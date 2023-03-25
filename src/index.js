@@ -1,6 +1,7 @@
 import './style.css'
 import notes from './notes.gif'
 import { displayForm } from './display-form'
+// import { addToStorage } from './add-to-localStorage'
 
 const everythingHolder = document.getElementById("container")
 let projects = [{name: "th", priority: "High", deadline: "14th October"}, 
@@ -52,6 +53,8 @@ const ToDo = () => {
         newProjectCreater.textContent = "New Project"
         newProjectCreater.id = "project-creator-btn"
         newProjectCreater.onclick = displayForm
+
+        // addToStorage()
 
         projectHolder.id = "project-holder"
 
