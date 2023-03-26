@@ -1,4 +1,6 @@
-function displayForm() {
+import { addToStorage } from "./add-to-localStorage"
+
+function displayForm(list) {
     const formHolder = document.getElementById("form")
     formHolder.textContent = ""
     const form = document.createElement("form")
@@ -31,7 +33,7 @@ function displayForm() {
     titleInput.type = "text"
     titleInput.id = "title"
     titleInput.name = "project_title"
-    titleInput.required = true
+    titleInput.required.valueOf(true)
 
     second.id = "second"
     priority.setAttribute('for', 'priority')
@@ -57,6 +59,11 @@ function displayForm() {
     submitBtn.type = "button"
     submitBtn.id = "submit-btn"
     submitBtn.textContent = "Sumbit"
+    submitBtn.addEventListener("click", function() {
+        addToStorage(list)
+        container.style.display = "grid"
+        formHolder.style.display = "none"
+    })
     cancel.type = "button"
     cancel.id = "cancel"
     cancel.textContent = "Cancel"

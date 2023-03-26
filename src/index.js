@@ -1,13 +1,12 @@
 import './style.css'
 import notes from './notes.gif'
-import { displayForm } from './display-form'
-// import { addToStorage } from './add-to-localStorage'
+import { pageAssemble } from './createPage'
 
 const everythingHolder = document.getElementById("container")
-let projects = [{name: "th", priority: "High", deadline: "14th October"}, 
-                {name: "th", priority: "Low", deadline: "14th October"}, 
-                {name: "th", priority: "Moderate", deadline: "14th October"}, 
-                {name: "th", priority: "High", deadline: "14th October"}]
+// let projects = [{title: "th", priority: "High", dueDate: "14th October"}, 
+//                 {title: "th", priority: "Low", dueDate: "14th October"}, 
+//                 {title: "th", priority: "Moderate", dueDate: "14th October"}, 
+//                 {title: "th", priority: "High", dueDate: "14th October"}]
 
 const ToDo = () => {
     const getDaDates = () => {
@@ -46,71 +45,14 @@ const ToDo = () => {
         everythingHolder.appendChild(heading)
     }
     
-    const createPage = (projects) => {
-        const projectHolder = document.createElement("div")
-        const newProjectCreater = document.createElement("button")
-
-        newProjectCreater.textContent = "New Project"
-        newProjectCreater.id = "project-creator-btn"
-        newProjectCreater.onclick = displayForm
-
-        // addToStorage()
-
-        projectHolder.id = "project-holder"
-
-        for(let i = 0; i < projects.length; i++) {
-            let project = document.createElement("div")
-            let projectTitle = document.createElement("h3")
-
-            let projectDeadLineHolder = document.createElement("div")
-            let projectDeadLineDisplayer = document.createElement("h4")
-            let projectDeadLine = document.createElement("h4")
-
-            let projectPriorityHolder = document.createElement("div")
-            let projectPriorityDisplayer = document.createElement("h4")
-            let projectPriority = document.createElement("h4")
-
-            project.classList.add("projects")
-            projectTitle.classList.add("project-title")
-            projectDeadLineHolder.classList.add("deadline-holder")
-            projectPriorityHolder.classList.add("priority-holder")
-
-            projectTitle.id = projects[i].name
-            projectDeadLine.id = "deadline of " + projects[i].name
-            projectPriority.id = "priority of " + projects[i].name
-
-            projectTitle.textContent = projects[i].name
-            projectDeadLineDisplayer.textContent = "Deadline:"
-            projectDeadLine.textContent = projects[i].deadline
-            projectPriorityDisplayer.textContent = "Priority:"
-            projectPriority.textContent = projects[i].priority
-
-            if (projectPriority.textContent === "High"){
-                projectPriority.classList.add("high")
-            } else if (projectPriority.textContent === "Moderate"){
-                projectPriority.classList.add("moderate")
-            } else {
-                projectPriority.classList.add("low")
-            }
-
-            projectDeadLineHolder.appendChild(projectDeadLineDisplayer)
-            projectDeadLineHolder.appendChild(projectDeadLine)
-            projectPriorityHolder.appendChild(projectPriorityDisplayer)
-            projectPriorityHolder.appendChild(projectPriority)
-
-            project.appendChild(projectTitle)
-            project.appendChild(projectDeadLineHolder)
-            project.appendChild(projectPriorityHolder)
-
-            projectHolder.appendChild(project)
-        }
-
-        projectHolder.appendChild(newProjectCreater)
-        everythingHolder.appendChild(projectHolder)
-    }
-    return {createTitle, createPage}
+    
+    return {createTitle}
 }
 
 const oneProject = ToDo()
 oneProject.createTitle("A-Notes", "The only app you need to note down all of your To-Do's", notes)
-oneProject.createPage(projects)
+let projects = []    
+if(localStorage.getItem("myProjects")){
+    projects = JSON.parse(localStorage.getItem("myProjects"))
+}
+pageAssemble(projects, everythingHolder)
