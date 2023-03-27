@@ -1,4 +1,5 @@
 import { addToStorage } from "./add-to-localStorage"
+import { formValidation } from "./checkErrors"
 
 function displayForm(list) {
     const formHolder = document.getElementById("form")
@@ -60,9 +61,14 @@ function displayForm(list) {
     submitBtn.id = "submit-btn"
     submitBtn.textContent = "Sumbit"
     submitBtn.addEventListener("click", function() {
-        addToStorage(list)
-        container.style.display = "grid"
-        formHolder.style.display = "none"
+        let validate = formValidation(titleInput, dueDateInput)
+        if(validate != false) {
+            addToStorage(list)
+            container.style.display = "grid"
+            formHolder.style.display = "none"
+        } else {
+            window.alert("Please enter all the data")
+        }
     })
     cancel.type = "button"
     cancel.id = "cancel"
