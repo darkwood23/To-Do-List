@@ -56,8 +56,8 @@ function displayForm(list) {
     dueDateInput.id = "date"
     dueDateInput.name = "project_due_date"
     dueDateInput.required = true
-    let today = new Date().toISOString().split('T')[0];
-    dueDate.setAttribute('min', today);
+    let today = new Date().toISOString().split('T')[0]
+    dueDate.setAttribute('min', today)
 
     submitBtn.type = "button"
     submitBtn.id = "submit-btn"
