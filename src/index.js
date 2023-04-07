@@ -10,11 +10,12 @@ const everythingHolder = document.getElementById("container")
 
 const ToDo = () => {
     const getDaDates = () => {
-        let today = new Date()
-        let month = today.getMonth()
-        let year = today.getFullYear()
-        let date = today.getDate()
-        let current_time = `${month}/${date}/${year}`
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        let yyyy = today.getFullYear();
+
+        let current_time = mm + '/' + dd + '/' + yyyy;
         return {current_time}
     }
     const createTitle = (title, tagline, image) => {

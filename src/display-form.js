@@ -56,6 +56,8 @@ function displayForm(list) {
     dueDateInput.id = "date"
     dueDateInput.name = "project_due_date"
     dueDateInput.required = true
+    let today = new Date().toISOString().split('T')[0];
+    dueDate.setAttribute('min', today);
 
     submitBtn.type = "button"
     submitBtn.id = "submit-btn"
@@ -67,7 +69,7 @@ function displayForm(list) {
             container.style.display = "grid"
             formHolder.style.display = "none"
         } else {
-            window.alert("Please enter all the data")
+            window.alert("Please enter all the data(s)")
         }
     })
     cancel.type = "button"
