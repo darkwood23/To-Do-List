@@ -8,6 +8,7 @@
 
 body {
     font-family: 'Mukta', sans-serif;
+    background-color: black;
 }
 
 #container {
@@ -21,7 +22,8 @@ body {
     gap: 2rem;
     margin: 1rem 2rem;
     padding: 2rem;
-    background-color: aqua;
+    background-color: orange;
+    position: sticky;
 }
 
 .logo {
@@ -64,15 +66,21 @@ body {
 #project-creator-btn {
     height: 170px;
     font-size: 4rem;
-    border: 2px solid white;
+    border: 2px solid black;
     border-radius: 2rem;
     background-color: orange;
+    color: white;
 }
 
 #project-creator-btn:hover {
-    background-color: black;
+    background-color: white;
     color: orange;  
     cursor: pointer; 
+}
+
+#project-creator-btn:active {
+    background-color: hsl(48, 100%, 61%);
+    color: white;
 }
 
 .high {
