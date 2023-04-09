@@ -45,8 +45,6 @@ const ToDo = () => {
         heading.appendChild(dateHolder)
         everythingHolder.appendChild(heading)
     }
-    
-    
     return {createTitle}
 }
 

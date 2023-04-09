@@ -1,4 +1,6 @@
 import { displayForm } from "./display-form"
+import { deleteLogs } from "./delete-log"
+import trashCan from'./trash-can.svg'
 
 function pageAssemble(projects, everythingHolder) {
     if(document.getElementById("project-holder")){
@@ -29,6 +31,8 @@ function pageAssemble(projects, everythingHolder) {
             let projectPriorityHolder = document.createElement("div")
             let projectPriorityDisplayer = document.createElement("h4")
             let projectPriority = document.createElement("h4")
+
+            let deleteIcon = new Image()
     
             project.classList.add("projects")
             projectTitle.classList.add("project-title")
@@ -52,15 +56,22 @@ function pageAssemble(projects, everythingHolder) {
             } else {
                 projectPriority.classList.add("low")
             }
-    
+
+            deleteIcon.classList.add("trash-icon")
+            deleteIcon.src = trashCan
+            deleteIcon.addEventListener("click", function() {
+                deleteLogs(i)
+            })
+
             projectDeadLineHolder.appendChild(projectDeadLineDisplayer)
             projectDeadLineHolder.appendChild(projectDeadLine)
             projectPriorityHolder.appendChild(projectPriorityDisplayer)
             projectPriorityHolder.appendChild(projectPriority)
-    
+            
             project.appendChild(projectTitle)
             project.appendChild(projectDeadLineHolder)
             project.appendChild(projectPriorityHolder)
+            project.appendChild(deleteIcon)
     
             projectHolder.appendChild(project)
         }

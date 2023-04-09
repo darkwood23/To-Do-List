@@ -1,4 +1,4 @@
-import { addToStorage } from "./add-to-localStorage"
+import { getInformation } from "./add-to-localStorage"
 import { formValidation } from "./checkErrors"
 
 function displayForm(list) {
@@ -56,8 +56,6 @@ function displayForm(list) {
     dueDateInput.id = "date"
     dueDateInput.name = "project_due_date"
     dueDateInput.required = true
-    let today = new Date().toISOString().split('T')[0]
-    dueDate.setAttribute('min', today)
 
     submitBtn.type = "button"
     submitBtn.id = "submit-btn"
@@ -65,7 +63,7 @@ function displayForm(list) {
     submitBtn.addEventListener("click", function() {
         let validate = formValidation(titleInput, dueDateInput)
         if(validate != false) {
-            addToStorage(list)
+            getInformation(list)
             container.style.display = "grid"
             formHolder.style.display = "none"
         } else {

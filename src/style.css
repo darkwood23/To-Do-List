@@ -56,6 +56,14 @@ body {
     gap: 6px;
 }
 
+.trash-icon {
+    width: 40px;
+}
+
+.trash-icon:hover {
+    background-color: red;
+}
+
 #project-holder {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -104,6 +112,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 }
 
 #add_project {
