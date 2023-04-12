@@ -1,5 +1,6 @@
 import { displayForm } from "./display-form"
 import { deleteLogs } from "./delete-log"
+import { displayProjectInfo } from "./project"
 import trashCan from'./trash-can.svg'
 
 function pageAssemble(projects, everythingHolder) {
@@ -56,6 +57,10 @@ function pageAssemble(projects, everythingHolder) {
             } else {
                 projectPriority.classList.add("low")
             }
+
+            project.addEventListener("click", function() {
+                displayProjectInfo(projectTitle, projectDeadLine, projectPriority)
+            })
 
             deleteIcon.classList.add("trash-icon")
             deleteIcon.src = trashCan
