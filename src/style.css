@@ -177,3 +177,67 @@ form button:active {
     cursor: pointer;
     opacity: 0.3;
 }
+.circle {
+    margin: 2rem;
+    width: 110rem;
+    height: 11rem;
+    background-color: orange;
+    position: relative;
+    border-radius: 4rem;
+}
+.circle::after {
+    content: " ";
+    position: absolute;
+    display: block;
+    background-color: black;
+    height: 10px;
+    margin-top: -5px;
+    top: 50%;
+    left: 5px;
+    right: 5px;
+    z-index: 9;
+    cursor: pointer;
+}
+.circle::before {
+    content: " ";
+    position: absolute;
+    display: block;
+    background-color: black;
+    width: 10px;
+    margin-left: -5px;
+    left: 50%;
+    top: 5px;
+    bottom: 5px;
+    z-index: 9;
+    cursor: pointer;
+}
+
+.circle:hover {
+    background-color: white;
+    cursor: pointer;
+}
+
+.body {
+    display: grid;
+}
+
+.div2 {
+    border: 2px solid orange;
+    margin: 2rem 2rem 0 2rem;
+    background-color: orange;
+}
+
+.div3 {
+    border: 2px solid black;
+    padding: 1rem;
+    margin: 0 2rem 2rem 2rem;
+    background-color: orange;
+}
+
+.todo-hold {
+    border: 2px solid orange;
+    border-radius: 7rem;
+    margin: 1rem;
+    background-color: orange;
+    font-size: 2rem;
+}

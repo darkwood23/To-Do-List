@@ -1,4 +1,5 @@
 import arrow from './arrow-left.svg'
+import { createNewToDo } from './to-dos'
 function displayProjectInfo(title, deadline, priority) {
     const container = document.getElementById("container")
     container.textContent = ""
@@ -10,13 +11,21 @@ function displayProjectInfo(title, deadline, priority) {
     const priorityName = document.createElement("h2")
     const priorityLevel = document.createElement("h2")
     const back = document.createElement("img")
+    const todoHolder = document.createElement("div")
+    const toDoHolder = document.createElement("div")
+    const newTodoCreater = document.createElement("div")
+    const body = document.createElement("div")
     
     head.classList.add("project-head")
+    toDoHolder.classList.add("project-todoHolder")
     name.classList.add("project-name")
     dueDate.classList.add("project-dueDate")
     priorityHolder.classList.add("project-priority-holder")
     priorityName.classList.add("project-priority-name")
     back.classList.add("project-back")
+    todoHolder.classList.add("project-todo-holder")
+    newTodoCreater.classList.add("circle")
+    body.classList.add("body")
     if(priority.textContent === "moderate") {
         priorityLevel.classList.add("moderate")
     } else if (priority.textContent === "high") {
@@ -25,12 +34,15 @@ function displayProjectInfo(title, deadline, priority) {
         priorityLevel.classList.add("low")
     }
 
-    back.src = arrow
+    newTodoCreater.addEventListener("click", function() {
+        createNewToDo(todoHolder)
+    })
 
     back.addEventListener("click", function() {
         location.replace("../dist/index.html")
     })
 
+    back.src = arrow
     name.textContent = title.textContent
     dueDate.textContent = "Deadline: " + deadline.textContent
     priorityName.textContent = "Priority: "
@@ -44,7 +56,11 @@ function displayProjectInfo(title, deadline, priority) {
     head.appendChild(dueDate)
     head.appendChild(priorityHolder)
 
+    body.appendChild(todoHolder)
+    body.appendChild(newTodoCreater)
+
     container.appendChild(head)
+    container.appendChild(body)
 }
 
 export { displayProjectInfo }
