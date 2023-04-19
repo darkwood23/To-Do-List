@@ -68,7 +68,6 @@ function pageAssemble(projects, everythingHolder) {
             project.addEventListener("click", function(e) {
                 if(e.target.id != "trash-icon") {
                     displayProjectInfo(projectTitle, projectDeadLine, projectPriority)
-
                 }
             })
 

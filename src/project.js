@@ -1,9 +1,9 @@
 import arrow from './arrow-left.svg'
-import { createNewToDo } from './to-dos'
+import { getToDoForm } from './todoform'
 function displayProjectInfo(title, deadline, priority) {
     const container = document.getElementById("container")
     container.textContent = ""
-
+    
     const head = document.createElement("div")
     const name = document.createElement("h1")
     const dueDate = document.createElement("h2")
@@ -35,7 +35,7 @@ function displayProjectInfo(title, deadline, priority) {
     }
 
     newTodoCreater.addEventListener("click", function() {
-        createNewToDo(todoHolder)
+        getToDoForm()
     })
 
     back.addEventListener("click", function() {
