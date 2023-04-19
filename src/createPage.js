@@ -58,14 +58,18 @@ function pageAssemble(projects, everythingHolder) {
                 projectPriority.classList.add("low")
             }
 
-            project.addEventListener("click", function() {
-                displayProjectInfo(projectTitle, projectDeadLine, projectPriority)
-            })
-
             deleteIcon.classList.add("trash-icon")
+            deleteIcon.id = "trash-icon"
             deleteIcon.src = trashCan
             deleteIcon.addEventListener("click", function() {
                 deleteLogs(i)
+            })
+
+            project.addEventListener("click", function(e) {
+                if(e.target.id != "trash-icon") {
+                    displayProjectInfo(projectTitle, projectDeadLine, projectPriority)
+
+                }
             })
 
             projectDeadLineHolder.appendChild(projectDeadLineDisplayer)

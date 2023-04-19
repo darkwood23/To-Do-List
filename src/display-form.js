@@ -23,6 +23,12 @@ function displayForm(list) {
 
     const submitBtn = document.createElement("button")
     const cancel = document.createElement("button")
+    const div1 = document.createElement("div")
+
+    title.classList.add("form-label")
+    priority.classList.add("form-label")
+    dueDate.classList.add("form-label")
+    div1.classList.add("div1")
 
     form.action = "add-project"
     form.method = "post"
@@ -59,7 +65,7 @@ function displayForm(list) {
 
     submitBtn.type = "button"
     submitBtn.id = "submit-btn"
-    submitBtn.textContent = "Sumbit"
+    submitBtn.textContent = "Submit"
     submitBtn.addEventListener("click", function() {
         let validate = formValidation(titleInput, dueDateInput)
         if(validate != false) {
@@ -94,11 +100,13 @@ function displayForm(list) {
     third.appendChild(dueDate)
     third.appendChild(dueDateInput)
 
+    div1.appendChild(submitBtn)
+    div1.appendChild(cancel)
+
     form.appendChild(first)
     form.appendChild(second)
     form.appendChild(third)
-    form.appendChild(submitBtn)
-    form.appendChild(cancel)
+    form.appendChild(div1)
 
     formHolder.appendChild(form)
 }

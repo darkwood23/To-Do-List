@@ -111,8 +111,8 @@ body {
     margin: 2rem;
     background-color: orange;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     display: none;
 }
 
@@ -120,12 +120,18 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     gap: 1rem;
     font-size: 4rem;
 }
 
-#add_project > button {
+.div1 {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div1 > button {
     width: 300px;
     height: 100px;
     font-size: 4rem;
@@ -133,9 +139,22 @@ body {
     border-radius: 5rem;
 }
 
-#add_project > button:hover {
+.div1 > button:hover {
     color: whitesmoke;
     background-color: black;
+}
+
+#cancel {
+    background-color: orange;
+    color: red;
+    border: none;
+    width: 200px;
+    height: 50px;
+    font-size: 2rem;
+}
+
+#cancel:hover {
+    color: white;
 }
 
 input,
@@ -221,17 +240,8 @@ form button:active {
     display: grid;
 }
 
-.div2 {
-    border: 2px solid orange;
-    margin: 2rem 2rem 0 2rem;
-    background-color: orange;
-}
-
-.div3 {
-    border: 2px solid black;
-    padding: 1rem;
-    margin: 0 2rem 2rem 2rem;
-    background-color: orange;
+.todo-checkbox {
+    width: 90px;
 }
 
 .todo-hold {
@@ -240,4 +250,6 @@ form button:active {
     margin: 1rem;
     background-color: orange;
     font-size: 2rem;
+    padding: 2rem;
+    text-align: center;
 }
