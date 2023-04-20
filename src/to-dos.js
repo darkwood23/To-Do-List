@@ -1,4 +1,4 @@
-function createNewToDo(holder) {
+function createNewToDo(holder, titleN, descriptionN) {
     const todoHold = document.createElement("div")
     const div1  = document.createElement("div")
     const div2 = document.createElement("div")
@@ -13,13 +13,13 @@ function createNewToDo(holder) {
     done.classList.add("todo-label-done")
     doneBox.classList.add("todo-checkbox")
     description.classList.add("todo-description")
-    div1.classList.add("div1")
+    div1.classList.add("divOne")
     div2.classList.add("div2")
 
-    title.textContent = "test"
+    title.textContent = titleN
     done.textContent = "Done:"
     doneBox.type = "checkbox"
-    description.textContent = "test"
+    description.textContent = descriptionN
 
     div1.appendChild(done)
     div1.appendChild(doneBox)
@@ -29,6 +29,7 @@ function createNewToDo(holder) {
     div2.appendChild(div1)
 
     todoHold.appendChild(div2)
+    todoHold.appendChild(br)
     todoHold.appendChild(description)
 
     holder.appendChild(todoHold)

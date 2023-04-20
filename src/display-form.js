@@ -34,6 +34,9 @@ function displayForm(list) {
     form.method = "post"
     form.id = "add_project"
 
+    form.classList.add("formE")
+    formHolder.classList.add("formH")
+
     first.id = "first"
     title.setAttribute('for', 'title')
     title.textContent = "Title:"
@@ -65,6 +68,7 @@ function displayForm(list) {
 
     submitBtn.type = "button"
     submitBtn.id = "submit-btn"
+    submitBtn.classList.add("submit-btn")
     submitBtn.textContent = "Submit"
     submitBtn.addEventListener("click", function() {
         let validate = formValidation(titleInput, dueDateInput)
@@ -78,6 +82,7 @@ function displayForm(list) {
     })
     cancel.type = "button"
     cancel.id = "cancel"
+    cancel.classList.add("cancel")
     cancel.textContent = "Cancel"
 
     cancel.addEventListener("click", function() {

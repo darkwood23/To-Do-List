@@ -1,8 +1,11 @@
+import { createNewToDo } from "./to-dos"
+
 function getToDoForm() {
     const ctnHolder = document.getElementById("container")
     const formE = document.getElementById("form")
     
     ctnHolder.style.display = 'none'
+    formE.textContent = ""
     formE.style.display = "block"
     
     const formHolder = document.createElement("div")
@@ -37,6 +40,26 @@ function getToDoForm() {
     description.textContent = "Description:"
     submitBtn.textContent = "Submit"
     cancel.textContent = "Cancel"
+    textArea.cols = "54"
+    textArea.rows = "10"
+
+    cancel.classList.add("cancel")
+    submitBtn.classList.add("submit-btn")
+
+    submitBtn.addEventListener("click", function() {
+        let titleN = titleInput.value
+        let descriptionN = textArea.value
+        createNewToDo(ctnHolder, titleN, descriptionN)
+        ctnHolder.style.display = "flex"
+        formE.style.display = "none"
+        ctnHolder.style.flexDirection = "column"
+    })
+
+    cancel.addEventListener("click", function() {
+        ctnHolder.style.display = "flex"
+        formE.style.display = "none"
+        ctnHolder.style.flexDirection = "column"
+    })
 
     div1.appendChild(title)
     div1.appendChild(titleInput)

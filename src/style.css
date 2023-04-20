@@ -124,6 +124,15 @@ body {
     font-size: 4rem;
 }
 
+#add_project label {
+    position: absolute;
+}
+
+#add_project input,
+#add_project select {
+    margin-left: 18rem;
+}
+
 .div1 {
     display: flex;
     gap: 2rem;
@@ -131,7 +140,7 @@ body {
     align-items: center;
 }
 
-.div1 > button {
+.submit-btn {
     width: 300px;
     height: 100px;
     font-size: 4rem;
@@ -139,12 +148,12 @@ body {
     border-radius: 5rem;
 }
 
-.div1 > button:hover {
+.submit-btn:hover {
     color: whitesmoke;
     background-color: black;
 }
 
-#cancel {
+.cancel {
     background-color: orange;
     color: red;
     border: none;
@@ -153,7 +162,7 @@ body {
     font-size: 2rem;
 }
 
-#cancel:hover {
+.cancel:hover {
     color: white;
 }
 
@@ -254,3 +263,42 @@ form button:active {
     text-align: center;
 }
 
+#todo-form-all {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+#todo-form {
+    font-size: 3rem;
+}
+
+#todo-form-all label {
+    position: absolute;
+}
+
+#todo-form-all input,
+#todo-form-all textarea {
+    margin-left: 16rem;
+}
+
+textarea {
+    font-size: 1rem;
+}
+
+textarea,
+input {
+    padding: 0.5rem;
+}
+
+#todo-title-input {
+    width: 58.8rem;
+}
+
+.divOne {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
