@@ -1,4 +1,5 @@
 import { createNewToDo } from "./to-dos"
+import { addToDoStorage } from "./todo-localStorage"
 
 function getToDoForm() {
     const ctnHolder = document.getElementById("container")
@@ -49,7 +50,9 @@ function getToDoForm() {
     submitBtn.addEventListener("click", function() {
         let titleN = titleInput.value
         let descriptionN = textArea.value
-        createNewToDo(ctnHolder, titleN, descriptionN)
+
+        addToDoStorage(titleN, descriptionN)
+
         ctnHolder.style.display = "flex"
         formE.style.display = "none"
         ctnHolder.style.flexDirection = "column"

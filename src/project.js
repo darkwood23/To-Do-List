@@ -1,5 +1,6 @@
 import arrow from './arrow-left.svg'
 import { getToDoForm } from './todoform'
+import { createNewToDo } from './to-dos'
 function displayProjectInfo(title, deadline, priority) {
     const container = document.getElementById("container")
     container.textContent = ""
@@ -12,12 +13,10 @@ function displayProjectInfo(title, deadline, priority) {
     const priorityLevel = document.createElement("h2")
     const back = document.createElement("img")
     const todoHolder = document.createElement("div")
-    const toDoHolder = document.createElement("div")
     const newTodoCreater = document.createElement("div")
     const body = document.createElement("div")
     
     head.classList.add("project-head")
-    toDoHolder.classList.add("project-todoHolder")
     name.classList.add("project-name")
     dueDate.classList.add("project-dueDate")
     priorityHolder.classList.add("project-priority-holder")
@@ -61,6 +60,12 @@ function displayProjectInfo(title, deadline, priority) {
 
     container.appendChild(head)
     container.appendChild(body)
+
+    let nn = JSON.parse(localStorage.getItem("myToDos"))
+    todoHolder.textContent = ''
+    for(let i = 0; i < nn.length; i++) {
+        createNewToDo(nn[i].title, nn[i].description)
+    }
 }
 
 export { displayProjectInfo }

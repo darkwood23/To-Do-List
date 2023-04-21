@@ -1,4 +1,6 @@
-function createNewToDo(holder, titleN, descriptionN) {
+function createNewToDo(titleN, descriptionN) {
+    const holder = document.querySelector(".project-todo-holder")
+    
     const todoHold = document.createElement("div")
     const div1  = document.createElement("div")
     const div2 = document.createElement("div")
