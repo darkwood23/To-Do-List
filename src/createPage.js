@@ -51,9 +51,10 @@ function pageAssemble(projects, everythingHolder) {
             projectPriorityDisplayer.textContent = "Priority:"
             projectPriority.textContent = projects[i].priority
     
-            if (projectPriority.textContent === "High"){
+            if (projectPriority.textContent === "High") {
                 projectPriority.classList.add("high")
-            } else if (projectPriority.textContent === "Moderate"){
+            } else if (projectPriority.textContent === "Moderate") {
+                
                 projectPriority.classList.add("moderate")
             } else {
                 projectPriority.classList.add("low")

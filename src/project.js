@@ -34,7 +34,7 @@ function displayProjectInfo(title, deadline, priority) {
     }
 
     newTodoCreater.addEventListener("click", function() {
-        getToDoForm()
+        getToDoForm(title)
     })
 
     back.addEventListener("click", function() {
@@ -61,10 +61,12 @@ function displayProjectInfo(title, deadline, priority) {
     container.appendChild(head)
     container.appendChild(body)
 
-    let nn = JSON.parse(localStorage.getItem("myToDos"))
-    todoHolder.textContent = ''
-    for(let i = 0; i < nn.length; i++) {
-        createNewToDo(nn[i].title, nn[i].description)
+    let newN = JSON.parse(localStorage.getItem("myProjects"))
+    for(let u = 0; u < newN.length; u++) {
+        document.querySelector(".project-todo-holder").textContent = ''
+        for(let nn = 0; nn < newN[u].todo.length; nn++) {
+            createNewToDo(newN[u].todo[nn].todoTitle, newN[u].todo[nn].description)
+        }
     }
 }
 

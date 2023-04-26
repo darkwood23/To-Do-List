@@ -1,7 +1,7 @@
 import { createNewToDo } from "./to-dos"
 import { addToDoStorage } from "./todo-localStorage"
 
-function getToDoForm() {
+function getToDoForm(projectTitle) {
     const ctnHolder = document.getElementById("container")
     const formE = document.getElementById("form")
     
@@ -51,7 +51,7 @@ function getToDoForm() {
         let titleN = titleInput.value
         let descriptionN = textArea.value
 
-        addToDoStorage(titleN, descriptionN)
+        addToDoStorage(titleN, descriptionN, projectTitle.textContent)
 
         ctnHolder.style.display = "flex"
         formE.style.display = "none"
