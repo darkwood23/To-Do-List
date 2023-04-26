@@ -61,11 +61,15 @@ function displayProjectInfo(title, deadline, priority) {
     container.appendChild(head)
     container.appendChild(body)
 
-    let newN = JSON.parse(localStorage.getItem("myProjects"))
-    for(let u = 0; u < newN.length; u++) {
-        document.querySelector(".project-todo-holder").textContent = ''
-        for(let nn = 0; nn < newN[u].todo.length; nn++) {
-            createNewToDo(newN[u].todo[nn].todoTitle, newN[u].todo[nn].description)
+    if(localStorage.getItem("myProjects")) {
+        let newN = JSON.parse(localStorage.getItem("myProjects"))
+        for(let u = 0; u < newN.length; u++) {
+            if(newN[u].title === title.textContent) {
+                document.querySelector(".project-todo-holder").textContent = ''
+                for (let nn = 0; nn < newN[u].todo.length; nn++) {
+                    createNewToDo(newN[u].todo[nn].todoTitle, newN[u].todo[nn].description)
+                }
+            }
         }
     }
 }
