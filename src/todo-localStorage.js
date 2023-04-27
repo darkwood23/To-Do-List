@@ -16,11 +16,12 @@ import { createNewToDo } from "./to-dos"
     
 // }
 
-function addToDoStorage(title, description, projectTitle) {
+function addToDoStorage(title, description, projectTitle, checked) {
     let n = JSON.parse(localStorage.getItem("myProjects"))
     for(let i = 0; i < n.length; i++) {
         if(n[i].title === projectTitle) {
-            n[i].todo.push({todoTitle : title, description})
+            let done = checked
+            n[i].todo.push({todoTitle : title, description, done})
         }
     }
     localStorage.setItem("myProjects", JSON.stringify(n))
@@ -29,7 +30,7 @@ function addToDoStorage(title, description, projectTitle) {
         if(newN[u].title === projectTitle) {
             document.querySelector(".project-todo-holder").textContent = ''
             for(let nn = 0; nn < newN[u].todo.length; nn++) {
-                createNewToDo(newN[u].todo[nn].todoTitle, newN[u].todo[nn].description)
+                createNewToDo(newN[u].todo[nn].todoTitle, newN[u].todo[nn].description, projectTitle)
             }
         }
     }

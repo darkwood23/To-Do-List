@@ -1,4 +1,4 @@
-function createNewToDo(titleN, descriptionN) {
+function createNewToDo(titleN, descriptionN, ddone) {
     const holder = document.querySelector(".project-todo-holder")
     
     const todoHold = document.createElement("div")
@@ -22,6 +22,24 @@ function createNewToDo(titleN, descriptionN) {
     done.textContent = "Done:"
     doneBox.type = "checkbox"
     description.textContent = descriptionN
+
+    if(ddone === true) {
+        doneBox.checked = true
+        
+    }
+
+    doneBox.addEventListener("click", function() {
+        let local = JSON.parse(localStorage.getItem("myProjects"))
+        for(let i = 0; i < local.length; i++) {
+            for(let u = 0; u < local[i].todo.length; u++) {
+                if(local[i].todo[u].todoTitle === titleN) {
+                    local[i].todo[u].done = true
+                }
+
+            }
+        }
+        localStorage.setItem("myProjects", JSON.stringify(local))
+    })
 
     div1.appendChild(done)
     div1.appendChild(doneBox)

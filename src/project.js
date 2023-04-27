@@ -67,7 +67,7 @@ function displayProjectInfo(title, deadline, priority) {
             if(newN[u].title === title.textContent) {
                 document.querySelector(".project-todo-holder").textContent = ''
                 for (let nn = 0; nn < newN[u].todo.length; nn++) {
-                    createNewToDo(newN[u].todo[nn].todoTitle, newN[u].todo[nn].description)
+                    createNewToDo(newN[u].todo[nn].todoTitle, newN[u].todo[nn].description, newN[u].todo[nn].done)
                 }
             }
         }

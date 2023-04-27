@@ -29,12 +29,15 @@ function formValidation(title, date) {
         return 0
     }
 
-    let anotherTitle = JSON.parse(localStorage.getItem("myProjects"))
-    for(let i = 0; i < anotherTitle.length; i++) {
-        if(anotherTitle[i].title === title.value) {
-            return 1
+    if(localStorage.getItem("myProjects")) {
+        let anotherTitle = JSON.parse(localStorage.getItem("myProjects"))
+        for(let i = 0; i < anotherTitle.length; i++) {
+            if(anotherTitle[i].title === title.value) {
+                return 1
+            }
         }
     }
+    
 }
 
 export { formValidation }
