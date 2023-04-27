@@ -72,12 +72,17 @@ function displayForm(list) {
     submitBtn.textContent = "Submit"
     submitBtn.addEventListener("click", function() {
         let validate = formValidation(titleInput, dueDateInput)
-        if(validate != false) {
+        if(validate === false) {
+            alert("Please enter all the data(s)")
+            
+        } else if (validate === 0) {
+            alert("Please enter a valid date")
+        } else if (validate === 1) {
+            alert("The title is already being used please use another one")
+        } else {
             getInformation(list)
             container.style.display = "grid"
             formHolder.style.display = "none"
-        } else {
-            window.alert("Please enter all the data(s)")
         }
     })
     cancel.type = "button"

@@ -20,7 +20,7 @@ function addToDoStorage(title, description, projectTitle) {
     let n = JSON.parse(localStorage.getItem("myProjects"))
     for(let i = 0; i < n.length; i++) {
         if(n[i].title === projectTitle) {
-                n[i].todo.push({todoTitle : title, description})
+            n[i].todo.push({todoTitle : title, description})
         }
     }
     localStorage.setItem("myProjects", JSON.stringify(n))
