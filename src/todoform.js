@@ -47,14 +47,35 @@ function getToDoForm(projectTitle) {
     submitBtn.classList.add("submit-btn")
 
     submitBtn.addEventListener("click", function() {
-        let titleN = titleInput.value
-        let descriptionN = textArea.value
+        let val
 
-        addToDoStorage(titleN, descriptionN, projectTitle.textContent, false)
+        let storage = JSON.parse(localStorage.getItem("myProjects"))
+        for(let i = 0; i < storage.length; i++) {
+            for(let u = 0; u < storage[i].todo.length; u++) {
+                if(storage[i].todo[u].todoTitle === titleInput.value) {
+                    alert("The title entered is already being used please use another title")
+                    val = false
+                }
+            }
+        }
 
-        ctnHolder.style.display = "flex"
-        formE.style.display = "none"
-        ctnHolder.style.flexDirection = "column"
+        if(titleInput.value === "" || textArea.value === "") {
+            alert("Please enter all the data(s)")
+            val = false
+        }
+
+        if(val != false) {
+            let titleN = titleInput.value
+            let descriptionN = textArea.value
+    
+            addToDoStorage(titleN, descriptionN, projectTitle.textContent, false)
+    
+            ctnHolder.style.display = "flex"
+            formE.style.display = "none"
+            ctnHolder.style.flexDirection = "column"
+
+        }
+
     })
 
     cancel.addEventListener("click", function() {

@@ -15,10 +15,12 @@ function displayProjectInfo(title, deadline, priority) {
     const todoHolder = document.createElement("div")
     const newTodoCreater = document.createElement("div")
     const body = document.createElement("div")
+    const save = document.createElement("button")
     
     head.classList.add("project-head")
     name.classList.add("project-name")
     dueDate.classList.add("project-dueDate")
+    save.id = "save-btn"
     priorityHolder.classList.add("project-priority-holder")
     priorityName.classList.add("project-priority-name")
     back.classList.add("project-back")
@@ -39,7 +41,7 @@ function displayProjectInfo(title, deadline, priority) {
 
     back.addEventListener("click", function() {
         location.replace("../dist/index.html")
-    })
+    })  
 
     back.src = arrow
     name.textContent = title.textContent

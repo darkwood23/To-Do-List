@@ -25,20 +25,34 @@ function createNewToDo(titleN, descriptionN, ddone) {
 
     if(ddone === true) {
         doneBox.checked = true
-        
+        doneBox.disabled = true
     }
 
     doneBox.addEventListener("click", function() {
-        let local = JSON.parse(localStorage.getItem("myProjects"))
-        for(let i = 0; i < local.length; i++) {
-            for(let u = 0; u < local[i].todo.length; u++) {
-                if(local[i].todo[u].todoTitle === titleN) {
-                    local[i].todo[u].done = true
+        if(doneBox.checked === true) {
+            let local = JSON.parse(localStorage.getItem("myProjects"))
+            for(let i = 0; i < local.length; i++) {
+                for(let u = 0; u < local[i].todo.length; u++) {
+                    if(local[i].todo[u].todoTitle === titleN) {
+                        local[i].todo[u].done = true
+                    }
+    
                 }
-
             }
+            localStorage.setItem("myProjects", JSON.stringify(local))
+
+        } else {
+            let local = JSON.parse(localStorage.getItem("myProjects"))
+            for(let i = 0; i < local.length; i++) {
+                for(let u = 0; u < local[i].todo.length; u++) {
+                    if(local[i].todo[u].todoTitle === titleN) {
+                        local[i].todo[u].done = false
+                    }
+    
+                }
+            }
+            localStorage.setItem("myProjects", JSON.stringify(local))
         }
-        localStorage.setItem("myProjects", JSON.stringify(local))
     })
 
     div1.appendChild(done)
