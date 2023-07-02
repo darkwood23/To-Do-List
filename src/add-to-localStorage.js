@@ -4,8 +4,11 @@ function getInformation(list) {
     let title = document.getElementById("title").value
     let priority = document.getElementById("priority").value
     let dueDate = document.getElementById("date").value
+    let noOfPeople = document.getElementById("how-many").value
+    let names = document.getElementById("names").value
+    names = names.split(",")
     let todo = []
-    list.push({title, priority, dueDate, todo})
+    list.push({title, priority, dueDate, noOfPeople, names, todo})
     addToStorage(list)
 }
 

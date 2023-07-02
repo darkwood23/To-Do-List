@@ -1,8 +1,12 @@
-function formValidation(title, date) {
+function formValidation(title, date, num, names) {
     if(title.value === "") {
         return false
     }
     if(date.value === "") {
+        return false
+    }
+
+    if(names.value === "") {
         return false
     }
 
@@ -26,18 +30,27 @@ function formValidation(title, date) {
     
     if(newDate < newDate2) {
         date.value = ""
-        return 0
+        return "Please enter a valid date"
     }
 
     if(localStorage.getItem("myProjects")) {
         let anotherTitle = JSON.parse(localStorage.getItem("myProjects"))
         for(let i = 0; i < anotherTitle.length; i++) {
             if(anotherTitle[i].title === title.value) {
-                return 1
+                return "The title is already being used please use another one"
             }
         }
     }
+
+    if(num.value <= 0) {
+        return "Please enter a valid number"
+    } 
     
+    let nameArr = names.value.split(",",)
+    if(nameArr.length !== Number(num.value)) {
+        return "No. of people and the no. of names you entered are not equal!"
+    }
+
 }
 
 export { formValidation }

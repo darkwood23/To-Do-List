@@ -1,7 +1,6 @@
 import { displayForm } from "./display-form"
 import { deleteLogs } from "./delete-log"
 import { displayProjectInfo } from "./project"
-import { createNewToDo } from "./to-dos"
 import trashCan from'./trash-can.svg'
 
 function pageAssemble(projects, everythingHolder) {

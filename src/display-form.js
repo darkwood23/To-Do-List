@@ -20,6 +20,13 @@ function displayForm(list) {
     const third = document.createElement("div")
     const dueDate = document.createElement("label")
     const dueDateInput = document.createElement("input")
+    
+    const peopleHolder = document.createElement("div")
+    const howManyQuestion = document.createElement("label")
+    const howMany = document.createElement("input")
+    const namesHolder = document.createElement("div")
+    const nameQuestion = document.createElement("label")
+    const names = document.createElement("input")
 
     const submitBtn = document.createElement("button")
     const cancel = document.createElement("button")
@@ -44,6 +51,7 @@ function displayForm(list) {
     titleInput.id = "title"
     titleInput.name = "project_title"
     titleInput.required.valueOf(true)
+    howMany.type = "number"
 
     second.id = "second"
     priority.setAttribute('for', 'priority')
@@ -66,23 +74,32 @@ function displayForm(list) {
     dueDateInput.name = "project_due_date"
     dueDateInput.required = true
 
+    peopleHolder.classList.add("people-holder")
+    howManyQuestion.classList.add("how-many-question")
+    howMany.id = "how-many"
+    namesHolder.classList.add("names-holder")
+    nameQuestion.classList.add("name-question")
+    names.id = "names"
+
+    howManyQuestion.textContent = "No. of people: "
+    nameQuestion.textContent = "Names: "
+    howMany.value = 1
+    names.placeholder = "Seperate by commas no-space"
+
     submitBtn.type = "button"
     submitBtn.id = "submit-btn"
     submitBtn.classList.add("submit-btn")
     submitBtn.textContent = "Submit"
     submitBtn.addEventListener("click", function() {
-        let validate = formValidation(titleInput, dueDateInput)
+        let validate = formValidation(titleInput, dueDateInput, howMany, names)
         if(validate === false) {
-            alert("Please enter all the data(s)")
-            
-        } else if (validate === 0) {
-            alert("Please enter a valid date")
-        } else if (validate === 1) {
-            alert("The title is already being used please use another one")
-        } else {
+            alert("Please enter all the data")
+        } else if (validate === undefined) {
             getInformation(list)
             container.style.display = "grid"
             formHolder.style.display = "none"
+        } else {
+            alert(validate)
         }
     })
     cancel.type = "button"
@@ -110,12 +127,20 @@ function displayForm(list) {
     third.appendChild(dueDate)
     third.appendChild(dueDateInput)
 
+    namesHolder.appendChild(nameQuestion)
+    namesHolder.appendChild(names)
+
+    peopleHolder.appendChild(howManyQuestion)
+    peopleHolder.appendChild(howMany)
+    peopleHolder.appendChild(namesHolder)
+
     div1.appendChild(submitBtn)
     div1.appendChild(cancel)
 
     form.appendChild(first)
     form.appendChild(second)
     form.appendChild(third)
+    form.appendChild(peopleHolder)
     form.appendChild(div1)
 
     formHolder.appendChild(form)

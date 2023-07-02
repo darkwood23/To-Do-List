@@ -130,7 +130,7 @@ body {
 
 #add_project input,
 #add_project select {
-    margin-left: 18rem;
+    margin-left: 25rem;
 }
 
 .div1 {
@@ -207,14 +207,14 @@ form button:active {
 }
 .circle {
     margin: 2rem;
-    width: 110rem;
+    width: 11rem;
     height: 11rem;
     background-color: orange;
     position: relative;
     border-radius: 4rem;
 }
 .circle::after {
-    content: " ";
+    content: "";
     position: absolute;
     display: block;
     background-color: black;
