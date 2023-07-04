@@ -13,3 +13,6 @@ After that you will need to create as many todos you need. To do that you will n
 I learned about how to create modules, import and export them through the help of webpack.
 I also learned about storing complex data in local storage and accessing them and changing them again.
 I think I also improved my problem solving skills because I had encountered some bugs which were really hard to fix.
+
+# Update
+Added the feature to be able to add names of people when you create a project and then assign them some to-dos to your liking.

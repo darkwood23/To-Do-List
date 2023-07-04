@@ -27,9 +27,9 @@ function displayProjectInfo(title, deadline, priority) {
     todoHolder.classList.add("project-todo-holder")
     newTodoCreater.classList.add("circle")
     body.classList.add("body")
-    if(priority.textContent === "moderate") {
+    if(priority.textContent === "Moderate") {
         priorityLevel.classList.add("moderate")
-    } else if (priority.textContent === "high") {
+    } else if (priority.textContent === "High") {
         priorityLevel.classList.add("high")
     } else {
         priorityLevel.classList.add("low")
