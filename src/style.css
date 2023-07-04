@@ -279,6 +279,16 @@ form button:active {
     position: absolute;
 }
 
+.check-box-input {
+    transform: scale(2, 2);
+    margin-right: 1rem;
+    
+}
+
+.check-box-label {
+    margin-top: 0.5rem;
+}
+
 #todo-form-all input,
 #todo-form-all textarea {
     margin-left: 16rem;

@@ -63,13 +63,20 @@ function displayProjectInfo(title, deadline, priority) {
     container.appendChild(head)
     container.appendChild(body)
 
+    let names = []
+    
+
     if(localStorage.getItem("myProjects")) {
         let newN = JSON.parse(localStorage.getItem("myProjects"))
+        
         for(let u = 0; u < newN.length; u++) {
             if(newN[u].title === title.textContent) {
                 document.querySelector(".project-todo-holder").textContent = ''
                 for (let nn = 0; nn < newN[u].todo.length; nn++) {
-                    createNewToDo(newN[u].todo[nn].todoTitle, newN[u].todo[nn].description, newN[u].todo[nn].done)
+                    for(let ii = 0; ii < newN[u].todo[nn].names.length; ii++) {
+                        names.push(newN[u].todo[nn].names[ii])
+                    }
+                    createNewToDo(newN[u].todo[nn].todoTitle, newN[u].todo[nn].description, newN[u].todo[nn].done, names)
                 }
             }
         }

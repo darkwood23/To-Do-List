@@ -11,13 +11,17 @@ function getToDoForm(projectTitle) {
     const formHolder = document.createElement("div")
     const form = document.createElement("form")
 
-    const div1 = document.createElement("div")
+    const div1 = document.createElement ("div")
     const title = document.createElement("label")
     const titleInput = document.createElement("input")
 
     const div2 = document.createElement("div")
     const description = document.createElement("label")
     const textArea = document.createElement("textarea")
+
+    const div3 = document.createElement("div")
+    const assignTo = document.createElement("label")
+    const assign = document.createElement("div")
 
     const submitBtn = document.createElement("button")
     const cancel = document.createElement("button")
@@ -32,9 +36,13 @@ function getToDoForm(projectTitle) {
     cancel.id = "cancel-button"
     div1.id = "divOne"
     div2.id = "divTwo"
+    div3.id = "divThree"
+    assignTo.id = "assignTo"
+    assign.id = "assign"
 
     titleInput.type = "text"
     submitBtn.type = "button"
+    assign.multiple = "multiple"
 
     title.textContent = "Title:"
     description.textContent = "Description:"
@@ -42,6 +50,32 @@ function getToDoForm(projectTitle) {
     cancel.textContent = "Cancel"
     textArea.cols = "54"
     textArea.rows = "10"
+    assignTo.textContent = "Assign To:"
+    
+
+    let get = JSON.parse(localStorage.getItem("myProjects"))
+    let number
+    let people
+    
+    for(let i = 0; i < get.length; i++) {
+        if(get[i].title === projectTitle.textContent) {
+            number = get[i].noOfPeople
+            people = get[i].names
+        }
+    }
+
+    for(let i = 0; i < Number(number); i++) {
+        let input = document.createElement("input")
+        let inputLabel = document.createElement("label")
+        input.type = "checkbox"
+        input.classList.add("check-box-input")
+        inputLabel.textContent = people[i]
+        inputLabel.classList.add("check-box-label")
+        inputLabel.id = "input-label-" + String(i)
+        input.checked = "checked"
+        assign.appendChild(input)
+        assign.appendChild(inputLabel)
+    }
 
     cancel.classList.add("cancel")
     submitBtn.classList.add("submit-btn")
@@ -67,8 +101,25 @@ function getToDoForm(projectTitle) {
         if(val != false) {
             let titleN = titleInput.value
             let descriptionN = textArea.value
+            let assignN = document.querySelectorAll(".check-box-input")
+            let assigNum = []
+            let names = []
+
+            assignN.forEach(name => {
+                if(name.checked) {
+                    assigNum.push(true)
+                } else {
+                    assigNum.push(false)
+                }
+            })
+            
+            for(let i = 0; i < assigNum.length; i++) {
+                if(assigNum[i]) {
+                    names.push(document.getElementById("input-label-" + String(i)).textContent)
+                }
+            }
     
-            addToDoStorage(titleN, descriptionN, projectTitle.textContent, false)
+            addToDoStorage(titleN, descriptionN, projectTitle.textContent, false, names)
     
             ctnHolder.style.display = "flex"
             formE.style.display = "none"
@@ -90,8 +141,12 @@ function getToDoForm(projectTitle) {
     div2.appendChild(description)
     div2.appendChild(textArea)
 
+    div3.appendChild(assignTo)
+    div3.appendChild(assign)
+
     form.appendChild(div1)
     form.appendChild(div2)
+    form.appendChild(div3)
 
     formHolder.appendChild(form)
     formHolder.appendChild(submitBtn)
